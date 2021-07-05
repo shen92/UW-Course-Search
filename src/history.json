@@ -1,0 +1,480 @@
+{
+  "glv": {
+    "credits": 3,
+    "description": "Introduces students to Object-Oriented Programming using classes and objects to solve more complex problems. Introduces array-based and linked data structures: including lists, stacks, and queues. Programming assignments require writing and developing multi-class (file) programs using interfaces, generics, and exception handling to solve challenging real world problems. Topics reviewed include reading/writing data and objects from/to files and exception handling, and command line arguments. Topics introduced: object-oriented design; class vs. object; create and define interfaces and iterators; searching and sorting; abstract data types (List,Stack,Queue,PriorityQueue(Heap),Binary Search Tree); generic interfaces (parametric polymorphism); how to design and write test methods and classes; array based vs. linked node implementations; introduction to complexity analysis; recursion.",
+    "keywords": [
+      "computer",
+      "science",
+      "programming",
+      "java"
+    ],
+    "name": "Programming 2",
+    "number": "COMP SCI 300",
+    "requisites": [
+      [
+        "hqd"
+      ]
+    ],
+    "sections": {
+      "LEC_001": {
+        "instructor": "Gary Dahl",
+        "location": "AB20 Weeks Hall for Geological Sciences",
+        "subsections": {},
+        "time": {
+          "thursday": "2:30pm - 3:45pm",
+          "tuesday": "2:30pm - 3:45pm"
+        }
+      },
+      "LEC_002": {
+        "instructor": "Gary Dahl",
+        "location": "132 Noland Hall",
+        "subsections": {},
+        "time": {
+          "thursday": "1:00pm - 2:15pm",
+          "tuesday": "1:00pm - 2:15pm"
+        }
+      },
+      "LEC_003": {
+        "instructor": "Mouna Ayari Ben Hadj Kacem",
+        "location": "AB20 Weeks Hall for Geological Sciences",
+        "subsections": {},
+        "time": {
+          "friday": "11:00am - 11:50pm",
+          "monday": "11:00am - 11:50pm",
+          "wednesday": "11:00am - 11:50pm"
+        }
+      },
+      "LEC_004": {
+        "instructor": "Mouna Ayari Ben Hadj Kacem",
+        "location": "1310 Sterling Hall",
+        "subsections": {},
+        "time": {
+          "friday": "2:25pm - 3:15pm",
+          "monday": "2:25pm - 3:15pm",
+          "wednesday": "2:25pm - 3:15pm"
+        }
+      }
+    },
+    "subject": "Computer Science"
+  },
+  "hqd": {
+    "credits": 3,
+    "description": "Learn the process of incrementally developing small (200-500 lines) programs along with the fundamental Computer Science topics. These topics include: problem abstraction and decomposition, the edit-compile-run cycle, using variables of primitive and more complex data types, conditional and loop-based flow control, basic testing and debugging techniques, how to define and call functions (methods), and IO processing techniques. Also teaches and reinforces good programming practices including the use of a consistent style, and meaningful documentation. Intended for students who have no prior programming experience.",
+    "keywords": [
+      "computer",
+      "science",
+      "programming",
+      "java"
+    ],
+    "name": "Programming 1",
+    "number": "COMP SCI 200",
+    "requisites": [],
+    "sections": {
+      "LEC_001": {
+        "instructor": "Jim Williams",
+        "location": "132 Noland Hall",
+        "subsections": {
+          "LAB_311": {
+            "location": "1350 Computer Sciences and Statistics",
+            "time": {
+              "wednesday": "9:30am - 10:45am"
+            }
+          },
+          "LAB_312": {
+            "location": "1350 Computer Sciences and Statistics",
+            "time": {
+              "wednesday": "11:00am - 12:15pm"
+            }
+          },
+          "LAB_314": {
+            "location": "1350 Computer Sciences and Statistics",
+            "time": {
+              "wednesday": "2:30pm - 3:45pm"
+            }
+          },
+          "LAB_315": {
+            "location": "1350 Computer Sciences and Statistics",
+            "time": {
+              "wednesday": "4:00pm - 5:15pm"
+            }
+          }
+        },
+        "time": {
+          "thursday": "8:00am - 9:15am",
+          "tuesday": "8:00am - 9:15am"
+        }
+      },
+      "LEC_002": {
+        "instructor": "Jim Williams",
+        "location": "132 Noland Hall",
+        "subsections": {
+          "LAB_321": {
+            "location": "1370 Computer Sciences and Statistics",
+            "time": {
+              "wednesday": "9:30am - 10:45am"
+            }
+          },
+          "LAB_323": {
+            "location": "1370 Computer Sciences and Statistics",
+            "time": {
+              "wednesday": "1:00pm - 2:15pm"
+            }
+          },
+          "LAB_324": {
+            "location": "1370 Computer Sciences and Statistics",
+            "time": {
+              "wednesday": "2:30pm - 3:45pm"
+            }
+          },
+          "LAB_325": {
+            "location": "1370 Computer Sciences and Statistics",
+            "time": {
+              "wednesday": "4:00pm - 5:15pm"
+            }
+          }
+        },
+        "time": {
+          "thursday": "11:00am - 12:15pm",
+          "tuesday": "11:00am - 12:15pm"
+        }
+      },
+      "LEC_003": {
+        "instructor": "Marc Renault",
+        "location": "113 Brogden Psychology Building",
+        "subsections": {
+          "LAB_331": {
+            "location": "1350 Computer Sciences and Statistics",
+            "time": {
+              "tuesday": "9:30am - 10:45am"
+            }
+          },
+          "LAB_332": {
+            "location": "1350 Computer Sciences and Statistics",
+            "time": {
+              "tuesday": "11:00am - 12:15pm"
+            }
+          },
+          "LAB_333": {
+            "location": "1350 Computer Sciences and Statistics",
+            "time": {
+              "tuesday": "1:00pm - 2:15pm"
+            }
+          },
+          "LAB_334": {
+            "location": "1350 Computer Sciences and Statistics",
+            "time": {
+              "tuesday": "2:30pm - 3:45pm"
+            }
+          }
+        },
+        "time": {
+          "friday": "1:20pm - 2:10pm",
+          "monday": "1:20pm - 2:10pm",
+          "wednesday": "1:20pm - 2:10pm"
+        }
+      },
+      "LEC_004": {
+        "instructor": "Marc Renault",
+        "location": "113 Brogden Psychology Building",
+        "subsections": {
+          "LAB_341": {
+            "location": "1370 Computer Sciences and Statistics",
+            "time": {
+              "tuesday": "9:30am - 10:45am"
+            }
+          },
+          "LAB_342": {
+            "location": "1370 Computer Sciences and Statistics",
+            "time": {
+              "tuesday": "11:00am - 12:15pm"
+            }
+          },
+          "LAB_343": {
+            "location": "1370 Computer Sciences and Statistics",
+            "time": {
+              "tuesday": "1:00pm - 2:15pm"
+            }
+          },
+          "LAB_344": {
+            "location": "1370 Computer Sciences and Statistics",
+            "time": {
+              "tuesday": "2:30pm - 3:45pm"
+            }
+          },
+          "LAB_345": {
+            "location": "1370 Computer Sciences and Statistics",
+            "time": {
+              "tuesday": "4:00pm - 5:15pm"
+            }
+          }
+        },
+        "time": {
+          "friday": "3:30pm - 4:20pm",
+          "monday": "3:30pm - 4:20pm",
+          "wednesday": "3:30pm - 4:20pm"
+        }
+      }
+    },
+    "subject": "Computer Science"
+  },
+  "pss": {
+    "credits": 3,
+    "description": "An introduction to fundamental structures of computer systems and the C programming language with a focus on the low-level interrelationships and impacts on performance. Topics include the virtual address space and virtual memory, the heap and dynamic memory management, the memory hierarchy and caching, assembly language and the stack, communication and interrupts/signals, compiling and assemblers/linkers.",
+    "keywords": [
+      "computer",
+      "science",
+      "engineering",
+      "electrical",
+      "machine",
+      "programming"
+    ],
+    "name": "Machine Organization and Programming",
+    "number": "COMP SCI 354",
+    "requisites": [
+      [
+        "kpx"
+      ],
+      [
+        "glv"
+      ]
+    ],
+    "sections": {
+      "LEC_001": {
+        "instructor": "James Skrentny",
+        "location": "132 Noland Hall",
+        "subsections": {},
+        "time": {
+          "thursday": "2:30pm - 3:45pm",
+          "tuesday": "2:30pm - 3:45pm"
+        }
+      },
+      "LEC_002": {
+        "instructor": "James Skrentny",
+        "location": "132 Noland Hall",
+        "subsections": {},
+        "time": {
+          "thursday": "4:0pm - 5:15pm",
+          "tuesday": "4:00pm - 5:15pm"
+        }
+      }
+    },
+    "subject": "Computer Science"
+  },
+  "qjy": {
+    "credits": 4,
+    "description": "Introduction. Stoichiometry and the mole concept, the behavior of gases, liquids and solids, thermochemistry, electronic structure of atoms and chemical bonding, descriptive chemistry of selected elements and compounds, intermolecular forces. For students taking one year or more of college chemistry; serves as a prereq for Chem 104; lecture, lab and discussion.",
+    "keywords": [
+      "chemistry"
+    ],
+    "name": "General Chemistry I",
+    "number": "CHEM 103",
+    "requisites": [],
+    "sections": {
+      "LEC_001": {
+        "instructor": "Unknown",
+        "location": "B10 Ingraham Hall",
+        "subsections": {
+          "DIS_301": {
+            "location": "49 Sellery Residence Hall",
+            "time": {
+              "monday": "3:30pm - 4:20pm",
+              "wednesday": "3:30pm - 4:20pm"
+            }
+          },
+          "DIS_302": {
+            "location": "2307 Chemistry Building",
+            "time": {
+              "monday": "4:35pm - 5:25pm",
+              "wednesday": "4:35pm - 5:25pm"
+            }
+          },
+          "DIS_303": {
+            "location": "123 Van Hise Hall",
+            "time": {
+              "monday": "1:20pm - 2:10pm",
+              "wednesday": "1:20pm - 2:10pm"
+            }
+          },
+          "DIS_304": {
+            "location": "123 Van Hise Hall",
+            "time": {
+              "monday": "2:25pm - 3:15pm",
+              "wednesday": "2:25pm - 3:15pm"
+            }
+          }
+        },
+        "time": {
+          "friday": "11:00am - 11:50am",
+          "monday": "11:00am - 11:50am",
+          "wednesday": "11:00am - 11:50am"
+        }
+      }
+    },
+    "subject": "Chemistry"
+  },
+  "zld": {
+    "credits": 3,
+    "description": "Basic concepts of logic, sets, partial order and other relations, and functions. Basic concepts of mathematics (definitions, proofs, sets, functions, and relations) with a focus on discrete structures: integers, bits, strings, trees, and graphs. Propositional logic, Boolean algebra, and predicate logic. Mathematical induction and recursion. Invariants and algorithmic correctness. Recurrences and asymptotic growth analysis. Fundamentals of counting.",
+    "keywords": [
+      "computer",
+      "science",
+      "math",
+      "mathematics",
+      "discrete",
+      "logic",
+      "algorithm",
+      "algorithms"
+    ],
+    "name": "Introduction To Discrete Mathematics",
+    "number": "COMP SCI 240",
+    "requisites": [
+      [
+        "nbt"
+      ]
+    ],
+    "sections": {
+      "LEC_001": {
+        "instructor": "Beck Hasti",
+        "location": "105 Brogden Psychology Building",
+        "subsections": {
+          "DIS_310": {
+            "location": "1257 Computer Sciences and Statistics",
+            "time": {
+              "tuesday": "8:50am - 9:40am"
+            }
+          },
+          "DIS_311": {
+            "location": "1257 Computer Sciences and Statistics",
+            "time": {
+              "thursday": "8:50am - 9:40am"
+            }
+          },
+          "DIS_312": {
+            "location": "3024 Engineering Hall",
+            "time": {
+              "tuesday": "9:55am - 10:45am"
+            }
+          },
+          "DIS_313": {
+            "location": "2345 Engineering Hall",
+            "time": {
+              "thursday": "9:55am - 10:45am"
+            }
+          },
+          "DIS_314": {
+            "location": "2535 Engineering Hall",
+            "time": {
+              "tuesday": "11:00am - 11:50am"
+            }
+          },
+          "DIS_315": {
+            "location": "2535 Engineering Hall",
+            "time": {
+              "thursday": "11:00am - 11:50am"
+            }
+          },
+          "DIS_316": {
+            "location": "B309 Van Vleck Hall",
+            "time": {
+              "tuesday": "9:55am - 10:45am"
+            }
+          }
+        },
+        "time": {
+          "friday": "9:55am - 10:45am",
+          "monday": "9:55am - 10:45am",
+          "wednesday": "9:55am - 10:45am"
+        }
+      },
+      "LEC_002": {
+        "instructor": "Beck Hasti",
+        "location": "132 Noland Hall",
+        "subsections": {
+          "DIS_320": {
+            "location": "B211 Van Vleck Hall",
+            "time": {
+              "thursday": "11:00am - 11:50am"
+            }
+          },
+          "DIS_321": {
+            "location": "B211 Van Vleck Hall",
+            "time": {
+              "tuesday": "12:05pm - 12:55pm"
+            }
+          },
+          "DIS_322": {
+            "location": "2255 Engineering Hall",
+            "time": {
+              "thursday": "12:05pm - 12:55pm"
+            }
+          },
+          "DIS_323": {
+            "location": "2349 Engineering Hall",
+            "time": {
+              "tuesday": "1:20pm - 2:10pm"
+            }
+          },
+          "DIS_324": {
+            "location": "1263 Computer Sciences and Statistics",
+            "time": {
+              "thursday": "1:20pm - 2:10pm"
+            }
+          },
+          "DIS_325": {
+            "location": "3418 Engineering Hall",
+            "time": {
+              "tuesday": "2:25pm - 3:15pm"
+            }
+          },
+          "DIS_326": {
+            "location": "3418 Engineering Hall",
+            "time": {
+              "thursday": "2:25pm - 3:15pm"
+            }
+          }
+        },
+        "time": {
+          "friday": "1:20pm - 2:10pm",
+          "monday": "1:20pm - 2:10pm",
+          "wednesday": "1:20pm - 2:10pm"
+        }
+      },
+      "LEC_003": {
+        "instructor": "Beck Hasti",
+        "location": "168 Noland Hall",
+        "subsections": {
+          "DIS_330": {
+            "location": "1263 Computer Sciences and Statistics",
+            "time": {
+              "tuesday": "8:50am - 9:40am"
+            }
+          },
+          "DIS_331": {
+            "location": "1263 Computer Sciences and Statistics",
+            "time": {
+              "tuesday": "1:20pm - 2:10pm"
+            }
+          },
+          "DIS_332": {
+            "location": "3024 Engineering Hall",
+            "time": {
+              "thursday": "9:55am - 10:45am"
+            }
+          },
+          "DIS_333": {
+            "location": "2349 Engineering Hall",
+            "time": {
+              "thursday": "12:05am - 12:55am"
+            }
+          }
+        },
+        "time": {
+          "friday": "2:25pm - 3:15pm",
+          "monday": "2:25pm - 3:15pm",
+          "wednesday": "2:25pm - 3:15pm"
+        }
+      }
+    },
+    "subject": "Computer Science"
+  }
+}
