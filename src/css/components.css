@@ -1,4 +1,23 @@
+.tabContent{
+  height: 80vh;
+  width: calc(100vw - 16px);
+  margin: -8px 8px 0px;
+  border: 1px solid #dee2e6;
+  border-radius: 0px 0px 5px 5px;
+  border-top: none;
+}
+
 .sidebar {
-  height: 100%;
-  border: 1px solid red;
+  flex: 1;
+  padding: 8px;
+}
+
+.courseArea {
+  flex: 5;
+  overflow: auto;
+  margin-left: 16px;
+}
+
+.courseCard {
+  margin-bottom: 8px;
 }

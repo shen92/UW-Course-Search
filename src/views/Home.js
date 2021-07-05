@@ -1,29 +1,52 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import { Sidebar } from '../components';
 
-import '../css/home.css'
+import { TabContent, Sidebar, CourseArea} from '../components';
 
 function Home() {
-    const [courses, setCourses] = useState({});
+    const [subjects, setSubjects] = useState([]);
+    const [filteredCourses, setFilteredCourses] = useState({});
+    
+    const [searchKeyword, setSearchKeyword] = useState("");
+    const [searchSubject, setSearchSubject] = useState("");
+    const [searchMinCredits, setSearchMinCredits] = useState(0);
+    const [searchMaxCredits, setSearchMaxCredits] = useState(0);
 
     useEffect(() => {
-        const data = require('../courses.json');
-        const history = require('../history.json');
-        setCourses(data);
-        // setHistory(history);
-    }, [])
+        const getSubjects = (data) => {
+            let subjects = new Set();
+            for (const course of Object.values(data)) {
+                subjects.add(course.subject)
+            }
+            setSubjects([...subjects]);
+        }
 
-        return (
-            <Container fluid className="home" >
-                <Row style={{height: '100%'}} >
-                    <Col xs={2} style={{height: '100%'}} >
-                        <Sidebar/>
-                    </Col>
-                    <Col xs={10}>Main Content</Col>
-                </Row>
-            </Container>
-        );
+        const data = require('../courses.json');
+        setFilteredCourses(data);
+        getSubjects(data);
+    }, []);
+
+    useEffect(() => {
+
+    }, [searchKeyword, searchSubject, searchMinCredits, searchMaxCredits]);
+
+    return (
+        <TabContent>
+            <div style={{ height: '100%', padding: 8, display: 'flex' }}>
+                <Sidebar 
+                    subjects={subjects}
+                    searchKeyword={searchKeyword}
+                    setSearchKeyword={setSearchKeyword}
+                    searchSubject={searchSubject}
+                    setSearchSubject={setSearchSubject}
+                    searchMinCredits={searchMinCredits}
+                    setSearchMinCredits={setSearchMinCredits}
+                    searchMaxCredits={searchMaxCredits}
+                    setSearchMaxCredits={setSearchMaxCredits}
+                />
+                <CourseArea filteredCourses={filteredCourses}/>
+            </div>
+        </TabContent>
+    );
 }
 
 
