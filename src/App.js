@@ -8,26 +8,28 @@ import { Home } from './views';
 
 function App() {
     return (
-        <Container fluid>
+        <Container fluid style={{padding: 0}}>
             <div className="topBar">
-                <div xs="auto">
-                    <img src="logo.png" alt="logo" style={{height: 50}}/>
+                <div xs="auto" style={{marginLeft: 8}}>
+                    <img src="logo192.png" alt="logo" style={{height: 50}}/>
                 </div>
-                <div style={{marginLeft: 16, fontSize: 25, fontWeight: 700, color: '#c5050c'}}>Course Search</div>
+                <div style={{marginLeft: 8, fontSize: 25, color: 'white'}}>Course Search</div>
             </div>
-            <Tabs defaultActiveKey="home" id="uncontrolled-tab-example">
-                <Tab eventKey="home" title="Home">
-                    <Home/>
-                </Tab>
-                <Tab eventKey="recommender" title="Recommender">
-                </Tab>
-                <Tab eventKey="planner" title="Planner">
-                    
-                </Tab>
-                <Tab eventKey="cart" title="Cart">
-                    
-                </Tab>
-            </Tabs>
+            <Container fluid style={{marginTop: 8}}>
+                <Tabs defaultActiveKey="home" id="uncontrolled-tab-example">
+                    <Tab eventKey="home" title="Home">
+                        <Home/>
+                    </Tab>
+                    <Tab eventKey="recommender" title="Recommender">
+                    </Tab>
+                    <Tab eventKey="planner" title="Planner">
+                        
+                    </Tab>
+                    <Tab eventKey="cart" title="Cart">
+                        
+                    </Tab>
+                </Tabs>
+            </Container>
         </Container>
     )
     
