@@ -19,5 +19,20 @@
 }
 
 .courseCard {
+  padding: 8px;
   margin-bottom: 8px;
+}
+
+.courseCardContent {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+.courseCardTitle {
+  font-size: 22px;
+}
+
+.courseCardBody {
+  font-size: 16px;
 }

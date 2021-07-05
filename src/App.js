@@ -16,7 +16,7 @@ function App() {
                 <div style={{ marginLeft: 8, fontSize: 25, color: 'white' }}>Course Search</div>
             </div>
             <div className="mainArea">
-                <Tabs defaultActiveKey="home" style={{ margin: '8px'}}>
+                <Tabs defaultActiveKey="home" style={{ margin: '8px' }}>
                     <Tab eventKey="home" title="Search">
                         <Home />
                     </Tab>
