@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-import { TabContent, Sidebar, CourseArea} from '../components';
+import { TabContent, Sidebar, CourseArea } from '../components';
 
-function Home() {
+function Home(props) {
+    const { cart, setCart } = props;
+
     const [subjects, setSubjects] = useState([]);
     const [allCourses, setAllCourses] = useState([]);
     const [filteredCourses, setFilteredCourses] = useState([]);
@@ -26,6 +28,7 @@ function Home() {
             for (const course of Object.entries(data)) {
                 courses.push({...course[1], key: course[0]});
             }
+            courses.sort((course1, course2) => course1.credits - course2.credits);
             setFilteredCourses(courses);
             setAllCourses(courses);
         }
@@ -68,7 +71,11 @@ function Home() {
                     setSearchMinCredits={setSearchMinCredits}
                     setSearchMaxCredits={setSearchMaxCredits}
                 />
-                <CourseArea filteredCourses={filteredCourses}/>
+                <CourseArea 
+                    filteredCourses={filteredCourses}
+                    cart={cart}
+                    setCart={setCart}
+                />
             </div>
         </TabContent>
     );

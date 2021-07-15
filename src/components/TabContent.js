@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../css/components.css'
+import '../styles/components.scss'
 
 function TabContent(props) {
     const { children } = props;

@@ -1,12 +1,17 @@
-import React from 'react';
-import { Tabs, Tab} from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Tabs, Tab } from 'react-bootstrap';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/app.css'
+import { Home, Cart } from './views';
 
-import { Home } from './views';
+import './styles/app.scss'
 
 function App() {
+    const [cart, setCart] = useState([]);
+    
+    useEffect(() => {
+        console.log(cart)
+    }, [cart])
+
     return (
         <div className="root">
             <div className="topBar">
@@ -18,13 +23,14 @@ function App() {
             <div className="mainArea">
                 <Tabs defaultActiveKey="home" style={{ margin: '8px' }}>
                     <Tab eventKey="home" title="Search">
-                        <Home />
+                        <Home cart={cart} setCart={setCart} />
                     </Tab>
                     <Tab eventKey="recommender" title="Recommender">
                     </Tab>
                     <Tab eventKey="planner" title="Planner">
                     </Tab>
                     <Tab eventKey="cart" title="Cart">
+                        <Cart cart={cart} setCart={setCart} />
                     </Tab>
                 </Tabs>
             </div>

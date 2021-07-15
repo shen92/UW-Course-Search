@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Card, Form } from 'react-bootstrap';
 
-import '../css/components.css'
+import '../styles/components.scss'
 
 function Sidebar(props) {
     const { 

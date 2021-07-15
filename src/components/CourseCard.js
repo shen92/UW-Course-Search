@@ -1,10 +1,26 @@
 import React from 'react';
 import { Accordion, Button, Card, Tabs, Tab, Table } from 'react-bootstrap';
 
-import '../css/components.css'
+import '../styles/components.scss'
 
 function CourseCard(props) {
-    const { course } = props;
+    const { course, cart, setCart } = props;
+
+    const addAll = () => {
+      const cartCourse = {
+        key: course.key,
+        name: course.name,
+        number: course.number,
+        credits: course.credits,
+        sections: course.sections
+      }
+      if (cart.findIndex(cartCourse => course.key === cartCourse.key) < 0) {
+        let newCart = [...cart];
+        newCart.push(cartCourse);
+        setCart(newCart);
+      }
+      
+    }
 
     const renderCourseSections = (sections) => {
       let courseSections = [];
@@ -165,6 +181,25 @@ function CourseCard(props) {
                   <div key={keyword} className="keywordTag">{keyword}</div>
                 )}
               </div>
+              <style type="text/css">
+                {`
+                .btn-uw {
+                  background-color: #c5050c;
+                  color: white;
+                }
+                .btn-uw:hover {
+                  color: white;
+                }
+                `}
+              </style>
+              <Button 
+                variant="uw" 
+                className="uwButton" 
+                style={{ marginTop: 12 }}
+                onClick={addAll}
+              >
+                Add to Cart
+              </Button>
             </div>
           </Tab>
           <Tab eventKey="sections" title="Sections">
