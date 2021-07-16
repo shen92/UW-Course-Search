@@ -7,6 +7,10 @@
   border-top: none;
 }
 
+.tabTitle {
+  font-size: 24px;
+}
+
 .sidebar {
   flex: 1;
   padding: 12px;
@@ -53,9 +57,21 @@
   text-transform: capitalize;
 }
 
-$primary: #c5050c;
-
 .uwButton {
   width: fit-content;
   padding: 4px 12px;
+}
+
+.cartItem {
+  width: 100%;
+  margin-bottom: 8px;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardItemTitle {
+  font-size: 20px;
 }

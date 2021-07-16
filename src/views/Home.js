@@ -59,8 +59,6 @@ function Home(props) {
         if (allCourses.length) filterCourses();
     }, [allCourses, searchKeyword, searchSubject, searchMinCredits, searchMaxCredits]);
 
-    // console.log(allCourses);
-
     return (
         <TabContent>
             <div style={{ height: '100%', padding: 8, display: 'flex' }}>

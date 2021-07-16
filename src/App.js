@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
 
 import { Home, Cart } from './views';
@@ -7,10 +7,6 @@ import './styles/app.scss'
 
 function App() {
     const [cart, setCart] = useState([]);
-    
-    useEffect(() => {
-        console.log(cart)
-    }, [cart])
 
     return (
         <div className="root">
