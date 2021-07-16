@@ -5,3 +5,4 @@ export { default as CourseCard } from './CourseCard';
 export { default as CartItem } from './CartItem';
 export { default as UWButton } from './UWButton';
 export { default as MessageModal } from './MessageModal';
+export { default as Preferences } from './Preferences';

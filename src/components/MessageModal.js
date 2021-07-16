@@ -11,21 +11,19 @@ function MessageModal(props) {
   } = props;
 
   return (
-    <>
-      <Modal
-        show={showMessageModal}
-        backdrop="static"
-        centered
-      >
-        <Modal.Header>
-          <Modal.Title>Message</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{modalMessage}</Modal.Body>
-        <Modal.Footer>
-          <UWButton label="Close" onClick={() => setShowMessageModal(false)}/>
-        </Modal.Footer>
-      </Modal>
-    </>
+    <Modal
+      show={showMessageModal}
+      backdrop="static"
+      centered
+    >
+      <Modal.Header>
+        <Modal.Title>Message</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{modalMessage}</Modal.Body>
+      <Modal.Footer>
+        <UWButton label="Close" onClick={() => setShowMessageModal(false)}/>
+      </Modal.Footer>
+    </Modal>
   );
 }
 
