@@ -6,14 +6,10 @@ import { TabContent, PlannerItem } from "../components";
 function Planner(props) {
   const { cart } = props;
 
-  const [timeBlocks, setTimeBlocks] = useState([]);
+  const [selections, setSelections] = useState([]);
   const [schedule, setSchedules] = useState([]);
 
-  useEffect(() => {
-    console.log(timeBlocks);
-  }, [timeBlocks]);
-
-  console.log(cart);
+  useEffect(() => {}, [selections]);
 
   const getTotalCredits = () => {
     return cart.length < 2
@@ -84,8 +80,8 @@ function Planner(props) {
                   key={course.number}
                   course={course}
                   cart={cart}
-                  timeBlocks={timeBlocks}
-                  setTimeBlocks={setTimeBlocks}
+                  selections={selections}
+                  setSelections={setSelections}
                 />
               ))
             ) : (

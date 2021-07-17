@@ -214,10 +214,10 @@ function CourseCard(props) {
           <Accordion.Collapse eventKey={index}>
             <Card.Body style={{ padding: 12 }}>
               <div className="courseCardBody">
-                <b>Instructor</b>: {sectionContent.instructor}
+                <b>Instructor</b>: <div>{sectionContent.instructor}</div>
               </div>
               <div className="courseCardBody">
-                <b>Location</b>: {sectionContent.location}
+                <b>Location</b>: <div>{sectionContent.location}</div>
               </div>
               {sectionContent.time &&
                 Object.keys(sectionContent.time).length > 0 && (
@@ -290,7 +290,7 @@ function CourseCard(props) {
           <Accordion.Collapse eventKey={index}>
             <Card.Body style={{ padding: 12 }}>
               <div className="courseCardBody">
-                <b>Location:</b> {subSectionContent.location}
+                <b>Location:</b> <div>{subSectionContent.location}</div>
               </div>
               {subSectionContent.time &&
                 Object.keys(subSectionContent.time).length > 0 && (

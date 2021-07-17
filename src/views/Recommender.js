@@ -80,6 +80,7 @@ function Recommender(props) {
     preferredSubjects,
     preferredKeywords,
     preferredHistorySubjects,
+    dependencies,
   ]);
 
   return (

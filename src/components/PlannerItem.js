@@ -7,11 +7,11 @@ import { UWButton } from "../components";
 import "../styles/components.scss";
 
 function PlannerItem(props) {
-  const { course, timeBlocks, setTimeBlocks } = props;
+  const { course, selections, setSelections } = props;
   const [showAll, setShowAll] = useState(false);
 
   const onAddCourseButtonClick = () => {
-    let newTimeBlocks = _.cloneDeep([...timeBlocks]);
+    let newTimeBlocks = _.cloneDeep([...selections]);
 
     let courseSections = [];
     if (course.sections) {
@@ -20,13 +20,13 @@ function PlannerItem(props) {
         if (section[1].subsections) {
           for (const subsection of Object.entries(section[1].subsections)) {
             courseSubsections.push({
-              number: subsection[0],
+              number: subsection[1].number,
               time: subsection[1].time,
             });
           }
         }
         courseSections.push({
-          number: section[0],
+          number: section[1].number,
           time: section[1].time,
           subsections: courseSubsections,
         });
@@ -50,11 +50,11 @@ function PlannerItem(props) {
       newTimeBlocks[courseIndex] = newCourse;
     }
 
-    setTimeBlocks(newTimeBlocks);
+    setSelections(newTimeBlocks);
   };
 
   const onAddCourseSectionButtonClick = (section) => {
-    let newTimeBlocks = _.cloneDeep([...timeBlocks]);
+    let newTimeBlocks = _.cloneDeep([...selections]);
     const courseIndex = newTimeBlocks.findIndex(
       (cartCourse) => course.key === cartCourse.key
     );
@@ -64,7 +64,7 @@ function PlannerItem(props) {
       for (const subsection of Object.entries(section.subsections)) {
         newSubsections.push({
           time: subsection[1].time,
-          number: subsection[0],
+          number: subsection[1].number,
         });
       }
     }
@@ -88,7 +88,7 @@ function PlannerItem(props) {
       let newCourse = newTimeBlocks[courseIndex];
       let newCourseSections = newCourse.sections;
       const sectionIndex = newCourseSections.findIndex(
-        (section) => section.number === section.number
+        (newSection) => newSection.number === section.number
       );
       if (sectionIndex < 0) {
         newCourseSections.push(newSection);
@@ -96,11 +96,11 @@ function PlannerItem(props) {
         newCourseSections[sectionIndex] = newSection;
       }
     }
-    setTimeBlocks(newTimeBlocks);
+    setSelections(newTimeBlocks);
   };
 
   const onAddCourseSubSectionButtonClick = (section, subsection) => {
-    let newTimeBlocks = _.cloneDeep([...timeBlocks]);
+    let newTimeBlocks = _.cloneDeep([...selections]);
     const courseIndex = newTimeBlocks.findIndex(
       (cartCourse) => course.key === cartCourse.key
     );
@@ -135,14 +135,14 @@ function PlannerItem(props) {
       let newCourse = newTimeBlocks[courseIndex];
       let newCourseSections = newCourse.sections;
       const sectionIndex = newCourseSections.findIndex(
-        (section) => section.number === section.number
+        (newCourseSection) => newCourseSection.number === section.number
       );
       if (sectionIndex < 0) {
         newCourseSections.push(newSection);
       } else {
         let newSubsections = newCourseSections[sectionIndex].subsections;
         const subsectionIndex = newSubsections.findIndex(
-          (subsection) => subsection.number === subsection.number
+          (newSubsection) => newSubsection.number === subsection.number
         );
         if (subsectionIndex < 0) {
           newSubsections.push({
@@ -151,7 +151,7 @@ function PlannerItem(props) {
         }
       }
     }
-    setTimeBlocks(newTimeBlocks);
+    setSelections(newTimeBlocks);
   };
 
   const renderTime = (sechdule) => {
