@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { Carousel } from "react-bootstrap";
 
-import { TabContent, Sidebar, CourseArea } from "../components";
+import { TabContent, Sidebar, CourseArea, PlannerItem } from "../components";
 
 function Planner(props) {
   const { cart } = props;
+
+  const [timeBlocks, setTimeBlocks] = useState([]);
+  const [schedule, setSchedules] = useState([]);
+
+  useEffect(() => {
+    console.log(timeBlocks);
+  }, [timeBlocks]);
+
+  console.log(cart);
 
   const getTotalCredits = () => {
     return cart.length < 2
@@ -58,17 +68,27 @@ function Planner(props) {
           <div
             style={{
               flex: 1,
-              width: "75%",
+              width: "100%",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               justifyContent: cart.length > 0 ? "flex-start" : "center",
               overflow: "auto",
               margin: "auto",
+              padding: cart.length > 0 ? "0px 8px" : 0,
             }}
           >
             {cart.length > 0 ? (
-              cart.map((course) => <></>)
+              cart.map((course, i) => (
+                // <PlannerItem
+                //   key={course.number}
+                //   course={course}
+                //   cart={cart}
+                //   timeBlocks={timeBlocks}
+                //   setTimeBlocks={setTimeBlocks}
+                // />
+                <div key={i} />
+              ))
             ) : (
               <div style={{ fontSize: 18, color: "darkgray" }}>
                 Your cart is empty.
@@ -78,11 +98,11 @@ function Planner(props) {
         </div>
         <div
           style={{
-            flex: 4,
+            flex: 2,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: cart.length > 0 ? "flex-start" : "center",
+            justifyContent: "center",
             overflow: "auto",
             border: "1px solid #dee2e6",
             borderRadius: 5,

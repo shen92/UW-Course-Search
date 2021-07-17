@@ -2,54 +2,94 @@ import React from "react";
 import _ from "lodash";
 import { Table } from "react-bootstrap";
 
-import { UWButton } from "../components";
+import { UWButton } from ".";
 
 import "../styles/components.scss";
 
-function CartItem(props) {
-  const { cart, setCart, course } = props;
+function PlannerItem(props) {
+  const { cart, course, timeBlocks, setTimeBlocks } = props;
 
-  const onRemoveCourseButtonClick = () => {
-    // Find course
-    const courseIndex = cart.findIndex(
-      (cartCourse) => cartCourse.key === course.key
-    );
-    if (courseIndex >= 0) {
-      let newCart = _.cloneDeep([...cart]);
-      newCart.splice(courseIndex, 1);
-      setCart(newCart);
+  const onAddCourseButtonClick = () => {
+    let newTimeBlocks = _.cloneDeep([...timeBlocks]);
+
+    if (
+      newTimeBlocks.findIndex((cartCourse) => course.key === cartCourse.key) < 0
+    ) {
+      let courseSections = [];
+      if (course.sections) {
+        for (const section of Object.entries(course.sections)) {
+          let courseSubsections = [];
+          if (section[1].subsections) {
+            for (const subsection of Object.entries(section[1].subsections)) {
+              courseSubsections.push({
+                number: subsection[0],
+              });
+            }
+          }
+          courseSections.push({
+            number: section[0],
+            subsections: courseSubsections,
+          });
+        }
+      }
+
+      const newCourse = {
+        key: course.key,
+        name: course.name,
+        number: course.number,
+        credits: course.credits,
+        sections: courseSections,
+      };
+
+      newTimeBlocks.push(newCourse);
     }
+
+    setTimeBlocks(newTimeBlocks);
   };
 
-  const onRemoveCourseSectionButtonClick = (sectionNumber) => {
-    // Find course
-    const courseIndex = cart.findIndex(
-      (cartCourse) => cartCourse.key === course.key
+  const onAddCourseSectionButtonClick = (section) => {
+    let newCart = [...timeBlocks];
+    const courseIndex = newCart.findIndex(
+      (cartCourse) => course.key === cartCourse.key
     );
-    if (courseIndex >= 0) {
-      let newCart = _.cloneDeep([...cart]);
+
+    let newSubsections = [];
+    if (section.subsections) {
+      for (const subsection of Object.entries(section.subsections)) {
+        newSubsections.push({
+          number: subsection[0],
+        });
+      }
+    }
+
+    let newSection = {
+      number: section.number,
+      subsections: newSubsections,
+    };
+
+    if (courseIndex < 0) {
+      const newCourse = {
+        key: course.key,
+        name: course.name,
+        number: course.number,
+        credits: course.credits,
+        sections: [newSection],
+      };
+      newCart.push(newCourse);
+    } else {
       let newCourse = newCart[courseIndex];
       let newCourseSections = newCourse.sections;
-
-      // Find section
       const sectionIndex = newCourseSections.findIndex(
-        (section) => section.number === sectionNumber
+        (newSection) => newSection.number === section.number
       );
-      if (sectionIndex >= 0) {
-        newCourseSections.splice(sectionIndex, 1);
-      }
-      // newCourse.sections = newCourseSections;
-
-      if (newCourseSections.length === 0) {
-        newCart.splice(courseIndex, 1);
-        setCart(newCart);
-      } else {
-        setCart(newCart);
+      if (sectionIndex < 0) {
+        newCourseSections.push(newSection);
       }
     }
+    setTimeBlocks(newCart);
   };
 
-  const onRemoveCourseSubSectionButtonClick = (
+  const onAddCourseSubSectionButtonClick = (
     sectionNumber,
     subsectionNumber
   ) => {
@@ -58,7 +98,7 @@ function CartItem(props) {
       (cartCourse) => cartCourse.key === course.key
     );
     if (courseIndex >= 0) {
-      let newCart = _.cloneDeep([...cart]);
+      let newCart = [...cart];
       let newCourse = newCart[courseIndex];
       let newCourseSections = newCourse.sections;
 
@@ -86,59 +126,32 @@ function CartItem(props) {
 
       if (newCourseSections.length === 0) {
         newCart.splice(courseIndex, 1);
-        setCart(newCart);
       } else {
-        setCart(newCart);
       }
     }
-  };
-
-  const renderTime = (sechdule) => {
-    let timetable = [];
-
-    for (const event of Object.entries(sechdule)) {
-      const day = event[0];
-      const time = event[1];
-      timetable.push(
-        <tr key={day} style={{ backgroundColor: "transparent" }}>
-          <td style={{ textTransform: "capitalize" }}>{day}</td>
-          <td>{time}</td>
-        </tr>
-      );
-    }
-
-    return (
-      <div style={{ flex: 1 }}>
-        <Table borderless style={{ marginTop: 4, width: "50%" }}>
-          <tbody>{timetable}</tbody>
-        </Table>
-      </div>
-    );
   };
 
   const renderCourseSections = (sections) => {
     return (
       sections.length > 0 &&
       sections.map((section) => (
-        <Table striped key={section.number} bordered>
+        <Table key={section.number} bordered striped>
           <thead>
             <tr>
               <th>
-                <div>{section.number}</div>
                 <div
                   style={{
-                    fontWeight: 400,
                     display: "flex",
-                    alignItems: "flex-start",
+                    alignItems: "center",
                     justifyContent: "space-between",
                   }}
                 >
-                  {renderTime(section.time)}
+                  {section.number}
                   <UWButton
-                    label="Remove"
+                    label="Add"
                     variant="clean"
                     onClick={() =>
-                      onRemoveCourseSectionButtonClick(section.number)
+                      onAddCourseSectionButtonClick(section.number)
                     }
                   />
                 </div>
@@ -150,7 +163,6 @@ function CartItem(props) {
               section.subsections.map((subsection) => (
                 <tr key={subsection.number}>
                   <td>
-                    <div>{subsection.number}</div>
                     <div
                       style={{
                         display: "flex",
@@ -158,12 +170,12 @@ function CartItem(props) {
                         justifyContent: "space-between",
                       }}
                     >
-                      {renderTime(subsection.time)}
+                      {subsection.number}
                       <UWButton
-                        label="Remove"
+                        label="Add"
                         variant="clean"
                         onClick={() =>
-                          onRemoveCourseSubSectionButtonClick(
+                          onAddCourseSubSectionButtonClick(
                             section.number,
                             subsection.number
                           )
@@ -181,18 +193,21 @@ function CartItem(props) {
 
   return (
     <div className="cartItem">
-      <div className="cardItemTitle">
-        {course.number} {course.name}
+      <div>
+        <b>{course.number}</b>
+      </div>
+      <div>
+        <b>{course.name}</b>
       </div>
       <div>{`Credits: ${course.credits}`}</div>
       <div>{renderCourseSections(course.sections)}</div>
       <UWButton
-        label="Remove All"
-        onClick={onRemoveCourseButtonClick}
-        justifyContent="center"
+        label="Add All"
+        onClick={onAddCourseButtonClick}
+        justifyContent="flex-end"
       />
     </div>
   );
 }
 
-export default CartItem;
+export default PlannerItem;

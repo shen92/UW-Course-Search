@@ -22,7 +22,6 @@ function Recommender(props) {
 
   useEffect(() => {
     const filterCourses = () => {
-      console.table(preferredHistorySubjects);
       let newFilteredCourses = _.cloneDeep(allCourses);
 
       newFilteredCourses = newFilteredCourses.filter(
@@ -82,8 +81,6 @@ function Recommender(props) {
     preferredKeywords,
     preferredHistorySubjects,
   ]);
-
-  console.table(filteredCourses);
 
   return (
     <TabContent>

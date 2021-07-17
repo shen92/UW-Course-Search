@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import _ from "lodash";
 import { Accordion, Button, Card, Tabs, Tab, Table } from "react-bootstrap";
 
 import { UWButton, MessageModal } from "../components";
@@ -11,7 +12,7 @@ function CourseCard(props) {
   const [modalMessage, setModalMessage] = useState("");
 
   const onAddCourseButtonClick = () => {
-    let newCart = [...cart];
+    let newCart = _.cloneDeep([...cart]);
 
     if (newCart.findIndex((cartCourse) => course.key === cartCourse.key) < 0) {
       let courseSections = [];
@@ -22,11 +23,13 @@ function CourseCard(props) {
             for (const subsection of Object.entries(section[1].subsections)) {
               courseSubsections.push({
                 number: subsection[0],
+                time: subsection[1].time,
               });
             }
           }
           courseSections.push({
             number: section[0],
+            time: section[1].time,
             subsections: courseSubsections,
           });
         }
@@ -51,7 +54,7 @@ function CourseCard(props) {
   };
 
   const onAddSectionButtonClick = (sectionNumber, sectionContent) => {
-    let newCart = [...cart];
+    let newCart = _.cloneDeep([...cart]);
     const courseIndex = newCart.findIndex(
       (cartCourse) => course.key === cartCourse.key
     );
@@ -60,6 +63,7 @@ function CourseCard(props) {
     if (sectionContent.subsections) {
       for (const subsection of Object.entries(sectionContent.subsections)) {
         newSubsections.push({
+          time: subsection[1].time,
           number: subsection[0],
         });
       }
@@ -67,6 +71,7 @@ function CourseCard(props) {
 
     let newSection = {
       number: sectionNumber,
+      time: sectionContent.time,
       subsections: newSubsections,
     };
 
@@ -101,7 +106,7 @@ function CourseCard(props) {
     sectionContent,
     subsectionNumber
   ) => {
-    let newCart = [...cart];
+    let newCart = _.cloneDeep([...cart]);
     const courseIndex = newCart.findIndex(
       (cartCourse) => course.key === cartCourse.key
     );
@@ -112,12 +117,14 @@ function CourseCard(props) {
         subsectionNumber === subsection[0] &&
           newSubsections.push({
             number: subsection[0],
+            time: subsection[1].time,
           });
       }
     }
 
     let newSection = {
       number: sectionNumber,
+      time: sectionContent.time,
       subsections: newSubsections,
     };
 
