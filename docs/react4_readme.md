@@ -53,7 +53,7 @@ Your project must be able to accept any data with the same format as above and t
 ## Problem 1
 
 Before or during the action of a user adding a course to the cart, design a way to let the user know if they are able to take the course based off of the requisites and the user's previously taken courses.
-  
+
 ## Problem 2
 
 If the user is not able to take a course in the cart because the user does not meet the requisites, design a way to show the user the possible course paths to take to be able to take the desired course.

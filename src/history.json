@@ -2,19 +2,10 @@
   "glv": {
     "credits": 3,
     "description": "Introduces students to Object-Oriented Programming using classes and objects to solve more complex problems. Introduces array-based and linked data structures: including lists, stacks, and queues. Programming assignments require writing and developing multi-class (file) programs using interfaces, generics, and exception handling to solve challenging real world problems. Topics reviewed include reading/writing data and objects from/to files and exception handling, and command line arguments. Topics introduced: object-oriented design; class vs. object; create and define interfaces and iterators; searching and sorting; abstract data types (List,Stack,Queue,PriorityQueue(Heap),Binary Search Tree); generic interfaces (parametric polymorphism); how to design and write test methods and classes; array based vs. linked node implementations; introduction to complexity analysis; recursion.",
-    "keywords": [
-      "computer",
-      "science",
-      "programming",
-      "java"
-    ],
+    "keywords": ["computer", "science", "programming", "java"],
     "name": "Programming 2",
     "number": "COMP SCI 300",
-    "requisites": [
-      [
-        "hqd"
-      ]
-    ],
+    "requisites": [["hqd"]],
     "sections": {
       "LEC_001": {
         "instructor": "Gary Dahl",
@@ -60,12 +51,7 @@
   "hqd": {
     "credits": 3,
     "description": "Learn the process of incrementally developing small (200-500 lines) programs along with the fundamental Computer Science topics. These topics include: problem abstraction and decomposition, the edit-compile-run cycle, using variables of primitive and more complex data types, conditional and loop-based flow control, basic testing and debugging techniques, how to define and call functions (methods), and IO processing techniques. Also teaches and reinforces good programming practices including the use of a consistent style, and meaningful documentation. Intended for students who have no prior programming experience.",
-    "keywords": [
-      "computer",
-      "science",
-      "programming",
-      "java"
-    ],
+    "keywords": ["computer", "science", "programming", "java"],
     "name": "Programming 1",
     "number": "COMP SCI 200",
     "requisites": [],
@@ -230,14 +216,7 @@
     ],
     "name": "Machine Organization and Programming",
     "number": "COMP SCI 354",
-    "requisites": [
-      [
-        "kpx"
-      ],
-      [
-        "glv"
-      ]
-    ],
+    "requisites": [["kpx"], ["glv"]],
     "sections": {
       "LEC_001": {
         "instructor": "James Skrentny",
@@ -263,9 +242,7 @@
   "qjy": {
     "credits": 4,
     "description": "Introduction. Stoichiometry and the mole concept, the behavior of gases, liquids and solids, thermochemistry, electronic structure of atoms and chemical bonding, descriptive chemistry of selected elements and compounds, intermolecular forces. For students taking one year or more of college chemistry; serves as a prereq for Chem 104; lecture, lab and discussion.",
-    "keywords": [
-      "chemistry"
-    ],
+    "keywords": ["chemistry"],
     "name": "General Chemistry I",
     "number": "CHEM 103",
     "requisites": [],
@@ -327,11 +304,7 @@
     ],
     "name": "Introduction To Discrete Mathematics",
     "number": "COMP SCI 240",
-    "requisites": [
-      [
-        "nbt"
-      ]
-    ],
+    "requisites": [["nbt"]],
     "sections": {
       "LEC_001": {
         "instructor": "Beck Hasti",

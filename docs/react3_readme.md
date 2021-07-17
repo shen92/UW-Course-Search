@@ -53,7 +53,7 @@ Your project must be able to accept any data with the same format as above and t
 ## Problem 1
 
 Load in a json file of previous courses located at `https://mysqlcs639.cs.wisc.edu:5000/previouscourses/`. The user should be able to view the contents at this url as courses that the user has previously taken.
-  
+
 ## Problem 2
 
 Create a rating system for previously taken courses. The user should be able to rate some or all of the previously taken courses loaded from the json file.
@@ -75,11 +75,13 @@ Recommend courses to the user based off of the rated previously taken courses an
 Based on the courses that the user has added to the cart, allow the user to select any subset of courses, sections, and subsections to later generate all possible schedules for.
 
 The user should be able to select 3 slight variations of course information for planning:
+
 1. A course with **all sections and subsections**
 2. A course with **one specific section** of a course with **all subsections**
 3. A course with **one specific section** that contains **one sepcifc subsection**.
 
 For example, if course `CS 639` has section `Section 1` with subsections `Subsection 1` and `Subsection 2`, the user should be able to select either of the following with the format of: course -> sections -> subsections with one action (such as a button click)
+
 1. `CS 639` -> `All` -> `All`
 2. `CS 639` -> `Section 1` -> `All`
 3. `CS 639` -> `Section 1` -> `Subsection 1`

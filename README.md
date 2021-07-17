@@ -55,7 +55,7 @@ Your project must be able to accept any data with the same format as above and t
 - Fetch data from server `https://mysqlcs639.cs.wisc.edu/students/5022025924/classes/completed`
 - Create a new component to represent previously taken courses. This component might look somewhat like the Course component, but it will be simpler and won’t have options to add the course to the cart.
 - Create a new component to hold the previously taken courses. Make this component accessible from the app.
-  
+
 ## Problem 2 (1.25 points)
 
 - Create a component for rating a specific course.
@@ -98,9 +98,11 @@ Your project must be able to accept any data with the same format as above and t
 ## Pseudocode for schedule generation
 
 ![pseudocode](./docs/pseudocode.jpg)
+
 - Now, timeBlocks contains a list for each course in which one of the section-subsection pairs must be selected to schedule. Iterate through all of these possibilities and add to schedules if there are no conflicts
 
 ## General (1 point)
+
 - Projects will be graded on the general usability and design of the system. You should consider the way the users navigate around the application, and other concepts covered in design lecture.
 
 ---
