@@ -20,6 +20,7 @@ function UWButton(props) {
           .btn-clean {
             background: none;
             color: #c5050c;
+            padding: 0;
           }
           .btn-clean:hover {
             background: none;

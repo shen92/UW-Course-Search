@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import _ from "lodash";
 import { Table } from "react-bootstrap";
 
@@ -8,6 +8,7 @@ import "../styles/components.scss";
 
 function CartItem(props) {
   const { cart, setCart, course } = props;
+  const [showAll, setShowAll] = useState(false);
 
   const onRemoveCourseButtonClick = () => {
     // Find course
@@ -129,16 +130,14 @@ function CartItem(props) {
           <thead>
             <tr>
               <th>
-                <div>{section.number}</div>
                 <div
                   style={{
-                    fontWeight: 400,
                     display: "flex",
-                    alignItems: "flex-start",
+                    alignItems: "center",
                     justifyContent: "space-between",
                   }}
                 >
-                  {renderTime(section.time)}
+                  {section.number}
                   <UWButton
                     label="Remove"
                     variant="clean"
@@ -146,6 +145,13 @@ function CartItem(props) {
                       onRemoveCourseSectionButtonClick(section.number)
                     }
                   />
+                </div>
+                <div
+                  style={{
+                    fontWeight: 400,
+                  }}
+                >
+                  {renderTime(section.time)}
                 </div>
               </th>
             </tr>
@@ -155,7 +161,6 @@ function CartItem(props) {
               section.subsections.map((subsection) => (
                 <tr key={subsection.number}>
                   <td>
-                    <div>{subsection.number}</div>
                     <div
                       style={{
                         display: "flex",
@@ -163,7 +168,7 @@ function CartItem(props) {
                         justifyContent: "space-between",
                       }}
                     >
-                      {renderTime(subsection.time)}
+                      {subsection.number}
                       <UWButton
                         label="Remove"
                         variant="clean"
@@ -175,6 +180,7 @@ function CartItem(props) {
                         }
                       />
                     </div>
+                    <div>{renderTime(subsection.time)}</div>
                   </td>
                 </tr>
               ))}
@@ -186,11 +192,23 @@ function CartItem(props) {
 
   return (
     <div className="cartItem">
-      <div className="cardItemTitle">
-        {course.number} {course.name}
+      <div
+        className="cardItemTitle"
+        style={{ display: "flex", justifyContent: "space-between" }}
+      >
+        <div>
+          {course.number} {course.name}
+        </div>
+        <UWButton
+          label={showAll ? "Hide all" : "Show all"}
+          onClick={() => {
+            setShowAll((showAll) => !showAll);
+          }}
+          variant="clean"
+        />
       </div>
       <div>{`Credits: ${course.credits}`}</div>
-      <div>{renderCourseSections(course.sections)}</div>
+      <div>{showAll && renderCourseSections(course.sections)}</div>
       <UWButton
         label="Remove All"
         onClick={onRemoveCourseButtonClick}

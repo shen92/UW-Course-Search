@@ -15,8 +15,6 @@ function Cart(props) {
       : cart.reduce((curr, next) => curr.credits + next.credits);
   };
 
-  console.log(cart);
-
   return (
     <TabContent>
       <div

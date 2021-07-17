@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Carousel } from "react-bootstrap";
 
-import { TabContent, Sidebar, CourseArea, PlannerItem } from "../components";
+import { TabContent, PlannerItem } from "../components";
 
 function Planner(props) {
   const { cart } = props;
@@ -80,14 +80,13 @@ function Planner(props) {
           >
             {cart.length > 0 ? (
               cart.map((course, i) => (
-                // <PlannerItem
-                //   key={course.number}
-                //   course={course}
-                //   cart={cart}
-                //   timeBlocks={timeBlocks}
-                //   setTimeBlocks={setTimeBlocks}
-                // />
-                <div key={i} />
+                <PlannerItem
+                  key={course.number}
+                  course={course}
+                  cart={cart}
+                  timeBlocks={timeBlocks}
+                  setTimeBlocks={setTimeBlocks}
+                />
               ))
             ) : (
               <div style={{ fontSize: 18, color: "darkgray" }}>
