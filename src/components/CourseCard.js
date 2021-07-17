@@ -14,36 +14,41 @@ function CourseCard(props) {
   const onAddCourseButtonClick = () => {
     let newCart = _.cloneDeep([...cart]);
 
-    if (newCart.findIndex((cartCourse) => course.key === cartCourse.key) < 0) {
-      let courseSections = [];
-      if (course.sections) {
-        for (const section of Object.entries(course.sections)) {
-          let courseSubsections = [];
-          if (section[1].subsections) {
-            for (const subsection of Object.entries(section[1].subsections)) {
-              courseSubsections.push({
-                number: subsection[0],
-                time: subsection[1].time,
-              });
-            }
+    let courseSections = [];
+    if (course.sections) {
+      for (const section of Object.entries(course.sections)) {
+        let courseSubsections = [];
+        if (section[1].subsections) {
+          for (const subsection of Object.entries(section[1].subsections)) {
+            courseSubsections.push({
+              number: subsection[0],
+              time: subsection[1].time,
+            });
           }
-          courseSections.push({
-            number: section[0],
-            time: section[1].time,
-            subsections: courseSubsections,
-          });
         }
+        courseSections.push({
+          number: section[0],
+          time: section[1].time,
+          subsections: courseSubsections,
+        });
       }
+    }
 
-      const newCourse = {
-        key: course.key,
-        name: course.name,
-        number: course.number,
-        credits: course.credits,
-        sections: courseSections,
-      };
+    const newCourse = {
+      key: course.key,
+      name: course.name,
+      number: course.number,
+      credits: course.credits,
+      sections: courseSections,
+    };
 
+    const courseIndex = newCart.findIndex(
+      (cartCourse) => course.key === cartCourse.key
+    );
+    if (courseIndex < 0) {
       newCart.push(newCourse);
+    } else {
+      newCart[courseIndex] = newCourse;
     }
 
     setCart(newCart);
@@ -92,6 +97,8 @@ function CourseCard(props) {
       );
       if (sectionIndex < 0) {
         newCourseSections.push(newSection);
+      } else {
+        newCourseSections[sectionIndex] = newSection;
       }
     }
     setCart(newCart);

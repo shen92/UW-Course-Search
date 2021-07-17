@@ -100,8 +100,13 @@ function CartItem(props) {
       const day = event[0];
       const time = event[1];
       timetable.push(
-        <tr key={day} style={{ backgroundColor: "transparent" }}>
-          <td style={{ textTransform: "capitalize" }}>{day}</td>
+        <tr
+          key={day}
+          style={{
+            backgroundColor: "transparent",
+          }}
+        >
+          <td style={{ textTransform: "capitalize", width: 200 }}>{day}</td>
           <td>{time}</td>
         </tr>
       );
