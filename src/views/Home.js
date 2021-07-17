@@ -25,7 +25,7 @@ function Home(props) {
             }
             courses = courses.filter(course => course.credits >= searchMinCredits);
             courses = courses.filter(course => course.credits <= searchMaxCredits);
-            
+
             courses.sort((course1, course2) => course1.credits - course2.credits);
             setFilteredCourses([...courses]);
         }

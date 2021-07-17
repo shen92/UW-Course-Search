@@ -14,6 +14,7 @@
 .sidebar {
   flex: 1;
   padding: 12px;
+  overflow: auto;
 }
 
 .courseArea {
@@ -74,4 +75,12 @@
 
 .cardItemTitle {
   font-size: 20px;
+}
+
+.rateCard {
+  padding: 4px;
+  margin-bottom: 4px;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
 }

@@ -6,3 +6,4 @@ export { default as CartItem } from './CartItem';
 export { default as UWButton } from './UWButton';
 export { default as MessageModal } from './MessageModal';
 export { default as Preferences } from './Preferences';
+export { default as RateCard } from './RateCard';

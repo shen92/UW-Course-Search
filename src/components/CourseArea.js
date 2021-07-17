@@ -10,14 +10,28 @@ function CourseArea(props) {
 
     return (
         <div className="courseArea">
-            {filteredCourses.map(course =>  
-                <CourseCard 
-                    key={course.key}
-                    course={course}
-                    cart={cart}
-                    setCart={setCart}
-                />
-            )}
+            {filteredCourses.length ? 
+                filteredCourses.map(course =>  
+                    <CourseCard 
+                        key={course.key}
+                        course={course}
+                        cart={cart}
+                        setCart={setCart}
+                    />
+                ) : 
+                <div 
+                    style={{
+                        fontSize: 18, 
+                        color: 'darkgray',
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}
+                >
+                    No results.
+                </div>
+        }
         </div>
     )
 }
