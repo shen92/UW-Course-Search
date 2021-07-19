@@ -1,5 +1,32 @@
 $primary: #c5050c;
 
+.carousel-control-prev-icon {
+  height: 100px;
+  width: 100px;
+  background-image: none;
+  filter: invert(100%);
+  margin-left: -12vw;
+}
+
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  outline: black;
+  background-image: none;
+  filter: invert(100%);
+  margin-right: -12vw;
+}
+
+.carousel-control-next-icon:after {
+  font-size: 55px;
+  color: $primary;
+}
+
+.carousel-control-prev-icon:after {
+  font-size: 55px;
+  color: $primary;
+}
+
 @import "~bootstrap/scss/bootstrap.scss";
 
 .root {

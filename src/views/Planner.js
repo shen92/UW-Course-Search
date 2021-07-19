@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Carousel } from "react-bootstrap";
 
 import { TabContent, PlannerItem, UWButton, Timetable } from "../components";
 
@@ -52,6 +53,10 @@ function Planner(props) {
       setSchedules(newSchedules);
     });
   }, [selections]);
+
+  const handleSelect = (selectedIndex, e) => {
+    setScheduleIndex(selectedIndex);
+  };
 
   const getTotalCredits = () => {
     return cart.length < 2
@@ -155,7 +160,7 @@ function Planner(props) {
               justifyContent: "center",
             }}
           >
-            Schedule {scheduleIndex} of {schedules.length}
+            Schedule {scheduleIndex + 1} of {schedules.length}
           </div>
           <div
             style={{
@@ -168,7 +173,37 @@ function Planner(props) {
               overflow: "auto",
             }}
           >
-            <Timetable />
+            {schedules.length > 0 ? (
+              <Carousel
+                style={{ width: "92%", height: "95%" }}
+                activeIndex={scheduleIndex}
+                controls
+                interval={null}
+                onSelect={handleSelect}
+                slide={false}
+              >
+                {schedules.map((schedule, i) => (
+                  <Carousel.Item
+                    key={i}
+                    style={{
+                      height: "63vh",
+                      width: "100%",
+                    }}
+                  >
+                    <Timetable schedule={schedule} />
+                  </Carousel.Item>
+                ))}
+              </Carousel>
+            ) : (
+              <div
+                style={{
+                  fontSize: 18,
+                  color: "darkgray",
+                }}
+              >
+                No results.
+              </div>
+            )}
           </div>
           <div
             style={{
