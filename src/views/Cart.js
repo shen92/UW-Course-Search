@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { TabContent, CartItem } from "../components";
 
@@ -76,5 +77,10 @@ function Cart(props) {
     </TabContent>
   );
 }
+
+Cart.props = {
+  cart: PropTypes.array.isRequired,
+  setCart: PropTypes.func.isRequired,
+};
 
 export default Cart;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import _ from "lodash";
 
 import { Card, Form } from "react-bootstrap";
@@ -51,5 +52,11 @@ function RateCard(props) {
     </Card>
   );
 }
+
+RateCard.props = {
+  course: PropTypes.object.isRequired,
+  preferredHistorySubjects: PropTypes.array.isRequired,
+  setPreferredHistorySubjects: PropTypes.func.isRequired,
+};
 
 export default RateCard;

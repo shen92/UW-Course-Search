@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import _ from "lodash";
 import { Table } from "react-bootstrap";
 
@@ -39,7 +40,6 @@ function CartItem(props) {
       if (sectionIndex >= 0) {
         newCourseSections.splice(sectionIndex, 1);
       }
-      // newCourse.sections = newCourseSections;
 
       if (newCourseSections.length === 0) {
         newCart.splice(courseIndex, 1);
@@ -217,5 +217,11 @@ function CartItem(props) {
     </div>
   );
 }
+
+CartItem.props = {
+  filteredCourses: PropTypes.array.isRequired,
+  cart: PropTypes.array.isRequired,
+  setCart: PropTypes.func.isRequired,
+};
 
 export default CartItem;

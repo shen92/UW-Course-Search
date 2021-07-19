@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import _ from "lodash";
 import { Carousel } from "react-bootstrap";
 
@@ -15,7 +16,7 @@ function Planner(props) {
   const [scheduleIndex, setScheduleIndex] = useState(0);
 
   useEffect(() => {
-    let cloneTime = (timeObj) => {
+    const cloneTime = (timeObj) => {
       const newTimeObj = _.cloneDeep(timeObj);
       for (const time of Object.entries(timeObj)) {
         const day = time[0];
@@ -25,7 +26,38 @@ function Planner(props) {
       return newTimeObj;
     };
 
-    if (selections.length === 0) return;
+    const hasConflict = (currBlocks, newBlock) => {
+      currBlocks.forEach((currBlock) => {
+        for (const currBlockRange of Object.entries(currBlock.range)) {
+          const currBlockRangeDay = currBlockRange[0];
+          const currBlockRangeStart = currBlockRange[1][0];
+          const currBlockRangeEnd = currBlockRange[1][1];
+          for (const newBlockRange of Object.entries(newBlock.range)) {
+            const newBlockRangeDay = newBlockRange[0];
+            const newBlockRangeStart = newBlockRange[1][0];
+            const newBlockRangeEnd = newBlockRange[1][1];
+
+            if (currBlockRangeDay === newBlockRangeDay) {
+              console.table([
+                newBlockRangeStart.toFixed(3) - currBlockRangeEnd.toFixed(3) <
+                  0,
+                newBlockRangeEnd.toFixed(3) - currBlockRangeStart.toFixed(3) <
+                  0,
+              ]);
+              if (
+                newBlockRangeStart.toFixed(3) - currBlockRangeEnd.toFixed(3) <
+                  0 ||
+                newBlockRangeEnd.toFixed(3) - currBlockRangeStart.toFixed(3) < 0
+              )
+                return true;
+            }
+          }
+        }
+      });
+      return false;
+    };
+
+    if (selections.length === 0) setSchedules([]);
 
     let timeBlocks = [];
     //for course in courses
@@ -67,46 +99,6 @@ function Planner(props) {
       });
       timeBlocks.push(courseTimeBlocks);
 
-      // Old algorithm
-      // let newSchedules = [];
-      // timeBlocks.forEach((timeBlock) => {
-      //   timeBlock.forEach((combination) => {
-      //     newSchedules.push(combination);
-      //   });
-      // });
-
-      // setSchedules(newSchedules);
-
-      // New Alogrithm
-
-      // Merge schedules
-
-      const hasConflict = (currBlocks, newBlock) => {
-        currBlocks.forEach((currBlock) => {
-          for (const currBlockRange of Object.entries(currBlock.range)) {
-            const currBlockRangeDay = currBlockRange[0];
-            const currBlockRangeStart = currBlockRange[1][0];
-            const currBlockRangeEnd = currBlockRange[1][1];
-            for (const newBlockRange of Object.entries(newBlock.range)) {
-              const newBlockRangeDay = newBlockRange[0];
-              const newBlockRangeStart = newBlockRange[1][0];
-              const newBlockRangeEnd = newBlockRange[1][1];
-
-              if (currBlockRangeDay === newBlockRangeDay) {
-                if (
-                  newBlockRangeStart.toFixed(3) - currBlockRangeEnd.toFixed(3) >
-                    0 ||
-                  newBlockRangeEnd.toFixed(3) - currBlockRangeStart.toFixed(3) >
-                    0
-                )
-                  return true;
-              }
-            }
-          }
-        });
-        return false;
-      };
-
       timeBlocks.sort((course1, course2) => course2.length - course1.length);
       let newSchedules = _.cloneDeep(timeBlocks[0]);
 
@@ -123,6 +115,7 @@ function Planner(props) {
               if (!inserted) {
                 if (hasConflict(newCombination, nextCourseBlock)) {
                   shouldUpdate = false;
+                  return;
                 } else {
                   newCombination.push(nextCourseBlock);
                   inserted = true;
@@ -315,5 +308,9 @@ function Planner(props) {
     </TabContent>
   );
 }
+
+Planner.props = {
+  cart: PropTypes.array.isRequired,
+};
 
 export default Planner;

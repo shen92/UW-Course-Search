@@ -45,17 +45,12 @@ function Sidebar(props) {
             placeholder="Search"
             autoComplete="off"
             onChange={(e) => onSearchTextInputChange(e)}
-            // value={searchKeyword}
           />
         </Form.Group>
 
         <Form.Group controlId="formSubject">
           <Form.Label>Subject</Form.Label>
-          <Form.Control
-            as="select"
-            onChange={(e) => onSubjectSelectChange(e)}
-            // value={searchSubject}
-          >
+          <Form.Control as="select" onChange={(e) => onSubjectSelectChange(e)}>
             {subjects.map((subject) => (
               <option key={subject}>{subject}</option>
             ))}
@@ -76,7 +71,6 @@ function Sidebar(props) {
               placeholder="min"
               autoComplete="off"
               onChange={(e) => onMinCreditsInputChange(e)}
-              // value={searchMinCredits}
             />
           </Form.Group>
           <div style={{ marginLeft: 5, marginRight: 5, marginTop: 13 }}>to</div>
@@ -86,7 +80,6 @@ function Sidebar(props) {
               placeholder="max"
               autoComplete="off"
               onChange={(e) => onMaxCreditsInputChange(e)}
-              // value={searchMaxCredits}
             />
           </Form.Group>
         </div>

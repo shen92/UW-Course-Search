@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import _ from "lodash";
 import { Accordion, Button, Card, Tabs, Tab, Table } from "react-bootstrap";
 
@@ -399,5 +400,11 @@ function CourseCard(props) {
     </>
   );
 }
+
+CourseCard.props = {
+  course: PropTypes.object.isRequired,
+  cart: PropTypes.array.isRequired,
+  setCart: PropTypes.func.isRequired,
+};
 
 export default CourseCard;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import _ from "lodash";
 
 import { TabContent, Preferences, CourseArea } from "../components";
@@ -106,5 +107,15 @@ function Recommender(props) {
     </TabContent>
   );
 }
+
+Recommender.props = {
+  cart: PropTypes.array.isRequired,
+  setCart: PropTypes.func.isRequired,
+  subjects: PropTypes.func.isRequired,
+  allCourses: PropTypes.func.isRequired,
+  historyCourses: PropTypes.func.isRequired,
+  keywords: PropTypes.func.isRequired,
+  dependencies: PropTypes.func.isRequired,
+};
 
 export default Recommender;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Card, Form } from "react-bootstrap";
 
 import { RateCard } from "../components";
@@ -104,5 +105,17 @@ function Preferences(props) {
     </Card>
   );
 }
+
+Preferences.props = {
+  subjects: PropTypes.array.isRequired,
+  keywords: PropTypes.array.isRequired,
+  historyCourses: PropTypes.array.isRequired,
+  preferredSubjects: PropTypes.array.isRequired,
+  setPreferredSubjects: PropTypes.func.isRequired,
+  preferredKeywords: PropTypes.array.isRequired,
+  setPreferredKeywords: PropTypes.func.isRequired,
+  preferredHistorySubjects: PropTypes.array.isRequired,
+  setPreferredHistorySubjects: PropTypes.func.isRequired,
+};
 
 export default Preferences;

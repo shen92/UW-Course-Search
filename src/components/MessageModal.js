@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Modal } from "react-bootstrap";
 
 import { UWButton } from "../components";
@@ -18,5 +19,11 @@ function MessageModal(props) {
     </Modal>
   );
 }
+
+MessageModal.props = {
+  showMessageModal: PropTypes.bool.isRequired,
+  setShowMessageModal: PropTypes.func.isRequired,
+  modalMessage: PropTypes.string.isRequired,
+};
 
 export default MessageModal;

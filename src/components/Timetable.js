@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import "../styles/components.scss";
 
@@ -63,5 +64,7 @@ function Timetable(props) {
     </div>
   );
 }
+
+Timetable.props = { schedule: PropTypes.array.isRequired };
 
 export default Timetable;

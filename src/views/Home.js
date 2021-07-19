@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import { TabContent, Sidebar, CourseArea } from "../components";
 
@@ -60,5 +61,12 @@ function Home(props) {
     </TabContent>
   );
 }
+
+Home.props = {
+  cart: PropTypes.array.isRequired,
+  setCart: PropTypes.func.isRequired,
+  subjects: PropTypes.array.isRequired,
+  allCourses: PropTypes.array.isRequired,
+};
 
 export default Home;

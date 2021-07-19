@@ -39,6 +39,8 @@ function CourseArea(props) {
 
 CourseArea.props = {
   filteredCourses: PropTypes.array.isRequired,
+  cart: PropTypes.array.isRequired,
+  setCart: PropTypes.func.isRequired,
 };
 
 export default CourseArea;

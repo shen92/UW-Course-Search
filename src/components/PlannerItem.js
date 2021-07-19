@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import _ from "lodash";
 import { Table } from "react-bootstrap";
 
@@ -277,5 +278,11 @@ function PlannerItem(props) {
     </div>
   );
 }
+
+PlannerItem.props = {
+  course: PropTypes.array.isRequired,
+  selections: PropTypes.array.isRequired,
+  setSelections: PropTypes.func.isRequired,
+};
 
 export default PlannerItem;

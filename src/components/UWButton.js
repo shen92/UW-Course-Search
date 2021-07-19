@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 
 import "../styles/components.scss";
@@ -39,4 +40,10 @@ function UWButton(props) {
   );
 }
 
+UWButton.props = {
+  label: PropTypes.string,
+  variant: PropTypes.string,
+  onClick: PropTypes.func,
+  justifyContent: PropTypes.string,
+};
 export default UWButton;
