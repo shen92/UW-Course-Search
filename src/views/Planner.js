@@ -1,15 +1,57 @@
 import React, { useState, useEffect } from "react";
-import { Carousel } from "react-bootstrap";
 
-import { TabContent, PlannerItem } from "../components";
+import { TabContent, PlannerItem, UWButton, Timetable } from "../components";
 
 function Planner(props) {
   const { cart } = props;
 
   const [selections, setSelections] = useState([]);
-  const [schedule, setSchedules] = useState([]);
+  const [schedules, setSchedules] = useState([]);
 
-  useEffect(() => {}, [selections]);
+  const [scheduleIndex, setScheduleIndex] = useState(0);
+
+  useEffect(() => {
+    let timeBlocks = [];
+    //for course in courses
+    selections.forEach((course) => {
+      const sections = course.sections;
+      let courseTimeBlocks = [];
+      //for section in course
+      sections.forEach((section) => {
+        const subsections = section.subsections;
+        //if section has no subsections
+        if (subsections.length === 0) {
+          courseTimeBlocks.push([
+            { name: course.number, number: section.number, time: section.time },
+          ]);
+        } else {
+          //for subsection in section
+          subsections.forEach((subsection) => {
+            courseTimeBlocks.push([
+              {
+                name: course.number,
+                number: section.number,
+                time: section.time,
+              },
+              {
+                name: course.number,
+                number: subsection.number,
+                time: subsection.time,
+              },
+            ]);
+          });
+        }
+      });
+      timeBlocks.push(courseTimeBlocks);
+      let newSchedules = [];
+      timeBlocks.forEach((timeBlock) => {
+        timeBlock.forEach((combination) => {
+          newSchedules.push(combination);
+        });
+      });
+      setSchedules(newSchedules);
+    });
+  }, [selections]);
 
   const getTotalCredits = () => {
     return cart.length < 2
@@ -102,8 +144,48 @@ function Planner(props) {
             border: "1px solid #dee2e6",
             borderRadius: 5,
             marginLeft: 8,
+            paddingBottom: 8,
           }}
-        ></div>
+        >
+          <div
+            className="tabTitle"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            Schedule {scheduleIndex} of {schedules.length}
+          </div>
+          <div
+            style={{
+              flex: 1,
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "auto",
+            }}
+          >
+            <Timetable />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <UWButton
+              label="Clear all"
+              onClick={() => {
+                setSchedules([]);
+                setSelections([]);
+              }}
+            />
+          </div>
+        </div>
       </div>
     </TabContent>
   );
