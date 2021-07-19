@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import _ from "lodash";
 import { Carousel } from "react-bootstrap";
 
 import { TabContent, PlannerItem, UWButton, Timetable } from "../components";
+
+import { timeToNumber } from "../util";
 
 function Planner(props) {
   const { cart } = props;
@@ -12,6 +15,18 @@ function Planner(props) {
   const [scheduleIndex, setScheduleIndex] = useState(0);
 
   useEffect(() => {
+    let cloneTime = (timeObj) => {
+      const newTimeObj = _.cloneDeep(timeObj);
+      for (const time of Object.entries(timeObj)) {
+        const day = time[0];
+        const range = time[1];
+        newTimeObj[day] = timeToNumber(range);
+      }
+      return newTimeObj;
+    };
+
+    if (selections.length === 0) return;
+
     let timeBlocks = [];
     //for course in courses
     selections.forEach((course) => {
@@ -23,7 +38,12 @@ function Planner(props) {
         //if section has no subsections
         if (subsections.length === 0) {
           courseTimeBlocks.push([
-            { name: course.number, number: section.number, time: section.time },
+            {
+              name: course.number,
+              number: section.number,
+              time: section.time,
+              range: cloneTime(section.time),
+            },
           ]);
         } else {
           //for subsection in section
@@ -33,23 +53,87 @@ function Planner(props) {
                 name: course.number,
                 number: section.number,
                 time: section.time,
+                range: cloneTime(section.time),
               },
               {
                 name: course.number,
                 number: subsection.number,
                 time: subsection.time,
+                range: cloneTime(subsection.time),
               },
             ]);
           });
         }
       });
       timeBlocks.push(courseTimeBlocks);
-      let newSchedules = [];
-      timeBlocks.forEach((timeBlock) => {
-        timeBlock.forEach((combination) => {
-          newSchedules.push(combination);
+
+      // Old algorithm
+      // let newSchedules = [];
+      // timeBlocks.forEach((timeBlock) => {
+      //   timeBlock.forEach((combination) => {
+      //     newSchedules.push(combination);
+      //   });
+      // });
+
+      // setSchedules(newSchedules);
+
+      // New Alogrithm
+
+      // Merge schedules
+
+      const hasConflict = (currBlocks, newBlock) => {
+        currBlocks.forEach((currBlock) => {
+          for (const currBlockRange of Object.entries(currBlock.range)) {
+            const currBlockRangeDay = currBlockRange[0];
+            const currBlockRangeStart = currBlockRange[1][0];
+            const currBlockRangeEnd = currBlockRange[1][1];
+            for (const newBlockRange of Object.entries(newBlock.range)) {
+              const newBlockRangeDay = newBlockRange[0];
+              const newBlockRangeStart = newBlockRange[1][0];
+              const newBlockRangeEnd = newBlockRange[1][1];
+
+              if (currBlockRangeDay === newBlockRangeDay) {
+                if (
+                  newBlockRangeStart.toFixed(3) - currBlockRangeEnd.toFixed(3) >
+                    0 ||
+                  newBlockRangeEnd.toFixed(3) - currBlockRangeStart.toFixed(3) >
+                    0
+                )
+                  return true;
+              }
+            }
+          }
         });
-      });
+        return false;
+      };
+
+      timeBlocks.sort((course1, course2) => course2.length - course1.length);
+      let newSchedules = _.cloneDeep(timeBlocks[0]);
+
+      for (let i = 1; timeBlocks.length > 1 && i < timeBlocks.length; i++) {
+        const nextCourse = timeBlocks[i];
+
+        //For current schedules, insert a new course block
+        newSchedules.forEach((combination, i) => {
+          let newCombination = _.cloneDeep(combination);
+          let shouldUpdate = true;
+          let inserted = false;
+          nextCourse.forEach((nextCourseBlocks) => {
+            nextCourseBlocks.forEach((nextCourseBlock) => {
+              if (!inserted) {
+                if (hasConflict(newCombination, nextCourseBlock)) {
+                  shouldUpdate = false;
+                } else {
+                  newCombination.push(nextCourseBlock);
+                  inserted = true;
+                }
+              }
+            });
+          });
+          if (shouldUpdate) newSchedules[i] = newCombination;
+        });
+      }
+
       setSchedules(newSchedules);
     });
   }, [selections]);
@@ -164,7 +248,7 @@ function Planner(props) {
               justifyContent: "center",
             }}
           >
-            Schedule {schedules.length === 0 ? 0 : scheduleIndex + 1} of
+            Schedule {schedules.length === 0 ? 0 : scheduleIndex + 1} of{" "}
             {schedules.length}
           </div>
           <div
@@ -186,6 +270,7 @@ function Planner(props) {
                 interval={null}
                 onSelect={handleSelect}
                 slide={false}
+                indicators={false}
               >
                 {schedules.map((schedule, i) => (
                   <Carousel.Item

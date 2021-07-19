@@ -92,7 +92,7 @@ function App() {
           <img src="logo192.png" alt="logo" style={{ height: 50 }} />
         </div>
         <div style={{ marginLeft: 8, fontSize: 25, color: "white" }}>
-          Course Search
+          Course Search & Planner
         </div>
       </div>
       <div className="mainArea">
