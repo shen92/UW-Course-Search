@@ -54,6 +54,10 @@ function Planner(props) {
     });
   }, [selections]);
 
+  useEffect(() => {
+    if (cart.length === 0) setSchedules([]);
+  }, [cart]);
+
   const handleSelect = (selectedIndex, e) => {
     setScheduleIndex(selectedIndex);
   };
@@ -160,7 +164,8 @@ function Planner(props) {
               justifyContent: "center",
             }}
           >
-            Schedule {scheduleIndex + 1} of {schedules.length}
+            Schedule {schedules.length === 0 ? 0 : scheduleIndex + 1} of
+            {schedules.length}
           </div>
           <div
             style={{
